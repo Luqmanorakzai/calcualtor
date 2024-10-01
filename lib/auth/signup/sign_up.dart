@@ -54,11 +54,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
           key: formKey,
           child: Column(
             children: [
-              SizedBox(
+             const  SizedBox(
                 height: 20,
               ),
-              Center(child: Text('Sing Up Screen')),
-              SizedBox(
+             const  Center(child: Text('Sing Up Screen')),
+             const  SizedBox(
                 height: 20,
               ),
               TextFormField(
@@ -128,8 +128,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
                    signUp();
-
-
                   }
                 },
               )
