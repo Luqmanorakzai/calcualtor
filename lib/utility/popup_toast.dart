@@ -1,5 +1,5 @@
 import 'package:fluttertoast/fluttertoast.dart';
-//access this by the className.methodName
+//access this by the className().method name
 class ToastPupop{
   // making it dynamic to pass parameters
   void toastShow(message, bgColor, textColor){
