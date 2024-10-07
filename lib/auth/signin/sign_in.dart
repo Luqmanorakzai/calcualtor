@@ -3,9 +3,7 @@ import 'package:calcualtor/auth/signup/sign_up.dart';
 import 'package:calcualtor/costum_widgets/custom_button.dart';
 import 'package:calcualtor/utility/popup_toast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 class SigninScreen extends StatefulWidget {
   const SigninScreen({super.key});
 

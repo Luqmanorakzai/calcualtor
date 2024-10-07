@@ -176,8 +176,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     // label: Text('text'),
                       hintText: 'Confirm Password',
                       contentPadding:
-                      EdgeInsets.symmetric(vertical: 10, horizontal: 4),
-                      hintStyle: TextStyle(color: Colors.black45),
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
+                      hintStyle: const TextStyle(color: Colors.black45),
                       enabledBorder: OutlineInputBorder(
                           borderSide:
                           const BorderSide(color: Colors.black45, width: 2),
