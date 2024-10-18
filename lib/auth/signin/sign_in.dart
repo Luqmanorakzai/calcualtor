@@ -17,7 +17,6 @@ class _SigninScreenState extends State<SigninScreen> {
   final _formKey = GlobalKey<FormState>();
   bool isLoading = false;
   FirebaseAuth auth = FirebaseAuth.instance;
-
   //// function area
   void singin() async {
     setState(() {
@@ -54,34 +53,33 @@ class _SigninScreenState extends State<SigninScreen> {
           child: Form(
             key: _formKey,
             child: Column(
-              children: [
-                TextFormField(
-                  validator: (email) {
-                    if (email!.isEmpty) {
-                      return 'Email is empty';
-                    }
-                    return null;
-                  },
-                  controller: emailController,
-                  style: const TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                      // filled: true,
-                      // enabled: true,
-                      // labelText: 'text',
-                      // label: Text('text'),
-                      hintText: 'abc@gmail.com',
-                      contentPadding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 4),
-                      hintStyle: TextStyle(color: Colors.black45),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.black45, width: 2),
-                          borderRadius: BorderRadius.circular(8)),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.black45, width: 2),
-                          borderRadius: BorderRadius.circular(8))),
-                ),
+              children: [ TextFormField(
+                validator: (email) {
+                  if (email!.isEmpty) {
+                    return 'Email is empty';
+                  }
+                  return null;
+                },
+                controller: emailController,
+                style: const TextStyle(color: Colors.black),
+                decoration: InputDecoration(
+                  // filled: true,
+                  // enabled: true,
+                  // labelText: 'text',
+                  // label: Text('text'),
+                    hintText: 'abc@gmail.com',
+                    contentPadding:
+                    EdgeInsets.symmetric(vertical: 10, horizontal: 4),
+                    hintStyle: TextStyle(color: Colors.black45),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide:
+                        BorderSide(color: Colors.black45, width: 2),
+                        borderRadius: BorderRadius.circular(8)),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide:
+                        BorderSide(color: Colors.black45, width: 2),
+                        borderRadius: BorderRadius.circular(8))),
+              ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -95,23 +93,24 @@ class _SigninScreenState extends State<SigninScreen> {
                   controller: passwordController,
                   style: const TextStyle(color: Colors.black),
                   decoration: InputDecoration(
-                      // filled: true,
-                      // enabled: true,
-                      // labelText: 'text',
-                      // label: Text('text'),
+                    // filled: true,
+                    // enabled: true,
+                    // labelText: 'text',
+                    // label: Text('text'),
                       hintText: 'Password',
                       contentPadding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 4),
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 4),
                       hintStyle: TextStyle(color: Colors.black45),
                       enabledBorder: OutlineInputBorder(
                           borderSide:
-                              const BorderSide(color: Colors.black45, width: 2),
+                          const BorderSide(color: Colors.black45, width: 2),
                           borderRadius: BorderRadius.circular(8)),
                       focusedBorder: OutlineInputBorder(
                           borderSide:
-                              const BorderSide(color: Colors.black45, width: 2),
+                          const BorderSide(color: Colors.black45, width: 2),
                           borderRadius: BorderRadius.circular(8))),
                 ),
+
                 const SizedBox(
                   height: 20,
                 ),

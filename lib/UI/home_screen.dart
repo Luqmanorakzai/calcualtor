@@ -3,7 +3,6 @@ import 'package:calcualtor/auth/signin/sign_in.dart';
 import 'package:calcualtor/costum_widgets/custom_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -79,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   // );
                                   return Container(
                                     height: 120,
-                                    margin: EdgeInsets.only(bottom: 10),
+                                    margin: const EdgeInsets.only(bottom: 10),
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         color: Colors.deepPurpleAccent),
