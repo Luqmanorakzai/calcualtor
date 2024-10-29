@@ -130,15 +130,14 @@ class _SigninScreenState extends State<SigninScreen> {
                   height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                   const  Text('Have not an account'),
+                   const  Text('Have not an account?'),
                     TextButton(onPressed: (){
-
                       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context){
                         return const SignUpScreen();
                       }));
-                    }, child: const Text('Sign In'))
+                    }, child: const Text('Sign up'))
                   ],
                 )
               ],

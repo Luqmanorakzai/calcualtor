@@ -1,6 +1,7 @@
 import 'package:calcualtor/UI/home_screen.dart';
 import 'package:calcualtor/costum_widgets/custom_button.dart';
 import 'package:calcualtor/utility/popup_toast.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -17,35 +18,47 @@ class _SignUpScreenState extends State<SignUpScreen> {
   var userNameController = TextEditingController();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
-  var ConfirmPasswordController = TextEditingController();
+  var confirmPasswordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   bool isLoading = false;
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-
+  final firestoreRef = FirebaseFirestore.instance.collection('users');
   void signUp() {
+    final name = userNameController.text.trim().toString();
+    final email = emailController.text.trim().toString();
+    final password = passwordController.text.trim().toString();
     setState(() {
       isLoading = true;
     });
-    firebaseAuth.createUserWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim()).then((value) {
-          ToastPupop().toastShow('signed up successfully ', Colors.deepPurpleAccent
-              , Colors.white);
-          Navigator.of(context)
-              .pushReplacement(MaterialPageRoute(builder: (context) {
-            return const  SigninScreen();
+    firebaseAuth.createUserWithEmailAndPassword(email: email, password: password).then((
+        value) {
+      //also set all the credentials ih .then function
+      // usr ref is created in user userRef we can also create here directly
+      // get data in profile screen
+      firestoreRef.doc(value.user!.uid).set({
+        'uid':value.user!.uid,
+        'userName':name,
+        'userEmail':email,
+      });
+      ToastPupop().toastShow('Signed In Successfully', Colors.deepPurpleAccent, Colors.white);
+      setState(() {
+        isLoading = false;
+      });
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) {
+            return const HomeScreen();
           }));
-          setState(() {
-            isLoading = false;
-          });
-    }).onError((error, stackTrace){
-      ToastPupop().toastShow(error, Colors.red, Colors.white);
+      setState(() {
+        isLoading = false;
+      });
+    }).onError((error, stackTrace) {
+      ToastPupop().toastShow(error, Colors.deepPurpleAccent, Colors.white);
       setState(() {
         isLoading = false;
       });
     });
-    emailController.clear();
-    passwordController.clear();
+
+
   }
 
   @override
@@ -162,12 +175,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     if (password!.isEmpty) {
                       return 'Confirm p is empty';
                     }
-                    if(passwordController.text.trim() !=ConfirmPasswordController.text.trim()){
+                    if(passwordController.text.trim() !=confirmPasswordController.text.trim()){
                       return 'passwords do not matched';
                     }
                     return null;
                   },
-                  controller: ConfirmPasswordController,
+                  controller: confirmPasswordController,
                   style: const TextStyle(color: Colors.black),
                   decoration: InputDecoration(
                     // filled: true,
